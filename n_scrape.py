@@ -36,7 +36,7 @@ def create_file(file, logging):
     
     # create file and add header
     logging.info("Creating daily csv file...")
-    header = ['date_time', 'search_count', 'job_id', 'job_title', 'company', 'location', 'update_time', 'applicants', 'job_time', 'job_level', 'job_type', 'company_size', 'company_industry']
+    header = ['date_time', 'search_count', 'job_id', 'job_title', 'company', 'location', 'update_time', 'applicants', 'job_time', 'job_level', 'job_type', 'company_size', 'company_industry', 'job_details']
     with open(file, 'w') as f:
         w = csv.writer(f)
         w.writerow(header)
@@ -196,10 +196,9 @@ def page_search(wd, search_page, search_count, file, logging):
         for attempt in range(attempts):
             try:
                 company_details = wd.find_element(By.XPATH, "//*[@id='main']/div/div[2]/div[2]/div/div[2]/div/div[1]/div/div[1]/div/div[1]/div[1]/div[4]/ul/li[2]").text
-                # wd.find_element(By.PARTIAL_LINK_TEXT, "Skills:").click()
-                # wd.find_element(By.CLASS_NAME, "mv5 t-16 pt1 pb1 artdeco-button artdeco-button--muted artdeco-button--icon-right artdeco-button--2 artdeco-button--secondary ember-view").click()
-                # job_details = wd.find_element(By.CLASS_NAME, "job-details-skill-match-status-list").text
-                # print('jd', job_details)
+                wd.find_element(By.PARTIAL_LINK_TEXT, "Skills:").click()
+                job_details = wd.find_element(By.XPATH, "//a[contains(@class,'job-details-how-you-match__skills-item-subtitle t-14 overflow-hidden')]").text
+                print('jd', job_details)
                 print(company_details)
                 if " · " in company_details:
                     company_size = company_details.split(" · ")[0]
@@ -218,7 +217,7 @@ def page_search(wd, search_page, search_count, file, logging):
         # append (a) line to file
         date_time = datetime.datetime.now().strftime("%d%b%Y-%H:%M:%S")
         # search_keyword = search_keyword.replace("%20", " ")
-        list_job = [date_time, search_count, job_id, job_title, company, location, update_time, applicants, job_time, job_level, job_type, company_size, company_industry]
+        list_job = [date_time, search_count, job_id, job_title, company, location, update_time, applicants, job_time, job_level, job_type, company_size, company_industry, job_details]
         list_jobs.append(list_job)
 
     with open(file, "a") as f:
