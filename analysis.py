@@ -31,6 +31,33 @@ def split_job_type(job_type_str):
         x = ['', '', '']
         return x
 
+def filtered_df(jobs_all, job_title, job_level):
+    # filter the jobs for title (and position)
+    jobs_all = jobs_all.fillna('')
+    jobs_filtered = jobs_all[jobs_all.job_title.str.contains(job_title, na=False)]
+    # print(jobs_filtered)
+    if job_level != "":
+        jobs_filtered = jobs_filtered[jobs_filtered.job_level.str.contains(job_level, na=False)]
+        # print(jobs_filtered)
+    # create new column for tokenized words
+    jobs_filtered['tokenized_details'] = ""
+    for index, row in jobs_filtered.iterrows():
+        # lowercase words
+        detail = row.job_details
+        # tokenize words
+        detail = word_tokenize(detail)
+        # handle multi-word tokenization (e.g., Power BI)
+        tokenizer = MWETokenizer([('power', 'bi'), ('scala', 'sucks')])
+        detail = tokenizer.tokenize(detail)
+        # remove duplicates
+        detail = list(set(detail))
+        # remove stopwords & numbers/punction
+        detail = [word for word in detail if word not in stopwords.words('english')] 
+        # add to details list
+        row.tokenized_details = detail
+    
+    return jobs_filtered 
+
 path = 'output'
 files = glob.glob(path + "/*.csv")
   
@@ -51,6 +78,9 @@ df = jobs_all
 col = df.columns.to_list()
 columns_to_check = col[3:5]
 jobs_all = df.drop_duplicates(subset=columns_to_check, keep='first')
+jobs_all[['job_time', 'job_level', 'job_type']] = jobs_all['job_type'].apply(split_job_type).to_list()
+# jobs_all.to_csv('output_fileaa.csv', header=True, index=True)
+
 
 # jobs_all.info()
 
@@ -58,15 +88,14 @@ jobs_all = df.drop_duplicates(subset=columns_to_check, keep='first')
 #Exploratory data analysis
 # print(jobs_all.job_title.value_counts().head(10))
 
-jobs_all[['job_time', 'job_level', 'job_type']] = jobs_all['job_type'].apply(split_job_type).to_list()
-print(jobs_all[['job_time', 'job_level', 'job_type']])
+# print(jobs_all[['job_time', 'job_level', 'job_type']])
 
-jobs_all.to_csv('output_fileaa.csv', header=True, index=True)
+# job_level = ["Internship", "Entry level", "Associate", "Mid-Senior level", "Director", "Executive"]
+# print(jobs_all.job_level.value_counts().head(4))
 
-# job_positions = ["Internship", "Entry level", "Associate", "Mid-Senior level", "Director", "Executive"]
+#ANALYSIS
+analyst_entry = filtered_df(jobs_all, "Analyst", "Entry-level")
+analyst_entry.to_csv('output_fileaa.csv', header=True, index=True)
 
-# # print(jobs_all.job_level.value_counts().head(4))
-# job_type_counts = df['job_type'].value_counts()
 
-# # Print the unique values and their counts
-# print(job_type_counts)   
+
