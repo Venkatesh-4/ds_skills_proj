@@ -119,15 +119,17 @@ data_lists = analyst_list.str.split(',').tolist()
 all_words = [word.strip() for lst in data_lists for word in lst]
 
 word_freq = Counter(all_words)
-
+keywords_analyst = []
+counts=[]
 for word, count in word_freq.most_common():
-    print(f"{word}: {count}")
-# #Wordcloud of keywords
-# keywords_analyst = ['excel', 'sql', 'microsoft', 'tableau',  'python', 'word', 
-# 'powerpoint', 'r',  'slack', 'coding', 'looker',
-# 'outlook', 'azure', 'jira', 'twilio', 'server', 'snowflake', 'ai', 'warehousing', 'scrum',
-# 'powerbi', 'shell', 'linux', 'sas', 'sharepoint', 'devops', 'mysql', 'c', 'visio', 
-# 'javascript', 'git', 'mssql', 'vba', 'powerpoints', 'java', 'postgresql', 'spreadsheets',
-# 'pandas', 'gdpr', 'elt', 'scala', 'css', 'spreadsheet', 'alteryx', 'github', 'postgres', 'power_bi', 'spss']
-# word_cloud(analyst_entry, keywords_analyst)
+    if count>=2 and word!='':
+        # print(f"{word}: {count}")
+        keywords_analyst.append(word)
+# print(keywords_analyst)      
+
+# ploting keywords
+wordcloud = WordCloud(width=800, height=400, background_color='white', max_words=200).generate_from_frequencies(word_freq)
+plt.imshow(wordcloud, interpolation="bilinear")
+plt.axis("off")
+plt.show()
 
