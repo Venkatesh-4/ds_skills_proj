@@ -55,22 +55,7 @@ def filtered_df(jobs_all, job_title, job_level):
         jobs_filtered.loc[index, 'tokenized_details'] = ','.join(values)
     return jobs_filtered 
 
-# def word_cloud(jobs_filtered, keywords):
-#     # convert df column to list
-#     analyst_list = jobs_filtered.tokenized_details.tolist()
-#     print(analyst_list)
-#     # flatten list of lists
-#     analyst_list = [item for sublist in analyst_list for item in sublist]
-#     # filter list
-#     analyst_list = [item for item in analyst_list if item in keywords]
-#     # convert for wordcloud
-#     analyst_list = " ".join(words for words in analyst_list)
-#     # wordcloud the results
-#     wc_join = WordCloud(background_color="white", collocations=False).generate(analyst_list)
-#     plt.imshow(wc_join, interpolation='bilinear')
-#     plt.axis("off")
-#     plt.show()
-#     return
+
 
 path = 'output'
 files = glob.glob(path + "/*.csv")
@@ -121,15 +106,42 @@ all_words = [word.strip() for lst in data_lists for word in lst]
 word_freq = Counter(all_words)
 keywords_analyst = []
 counts=[]
+percentage=[]
+tot_count=0
 for word, count in word_freq.most_common():
     if count>=2 and word!='':
         # print(f"{word}: {count}")
         keywords_analyst.append(word)
+        counts.append(count)
+        tot_count = tot_count+count
+for i in counts:
+    percentage.append((i/tot_count)*100)
+
+# Top keywords with their percentage of occarance 
+count_keywords = pd.DataFrame({'keywords': keywords_analyst, 'counts': counts, 'percentage': percentage})
+# print(count_keywords)
+
+
 # print(keywords_analyst)      
 
 # ploting keywords
-wordcloud = WordCloud(width=800, height=400, background_color='white', max_words=200).generate_from_frequencies(word_freq)
-plt.imshow(wordcloud, interpolation="bilinear")
-plt.axis("off")
+# wordcloud = WordCloud(width=800, height=400, background_color='white', max_words=200).generate_from_frequencies(word_freq)
+# plt.imshow(wordcloud, interpolation="bilinear")
+# plt.axis("off")
+# plt.show()
+
+g = sns.barplot(count_keywords, x="keywords", y="percentage")
+g.set_xticklabels(g.get_xticklabels(), 
+                          rotation=45, 
+                          horizontalalignment='right')
+plt.subplots_adjust(bottom=0.4)
+plt.xlabel("")
+plt.ylabel("Likelyhood to be in job posting (%)")
+plt.title('Keyword Analysis') 
 plt.show()
+
+
+
+
+
 
