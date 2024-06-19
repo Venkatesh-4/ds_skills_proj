@@ -9,13 +9,12 @@ from nltk.corpus import stopwords
 from IPython.display import set_matplotlib_formats
 import string
 from collections import Counter
-
-
 # Uncomment on first run
-# 
-import nltk
+# import nltk
 # nltk.download('punkt')
 # nltk.download('stopwords')
+
+
 def split_job_type(job_type_str):
     parts = job_type_str.split(' ')
     if len(parts) == 4:
@@ -78,19 +77,20 @@ col = df.columns.to_list()
 columns_to_check = col[3:5]
 jobs_all = df.drop_duplicates(subset=columns_to_check, keep='first')
 jobs_all[['job_time', 'job_level', 'job_type']] = jobs_all['job_type'].apply(split_job_type).to_list()
+
+
+#This is to check how the new column with skills has come about
 # jobs_all.to_csv('output_fileaa.csv', header=True, index=True)
 
-
-# jobs_all.info()
+jobs_all.info()
 
 
 #Exploratory data analysis
-# print(jobs_all.job_title.value_counts().head(10))
+print(jobs_all.job_title.value_counts().head(10))
 
-# print(jobs_all[['job_time', 'job_level', 'job_type']])
+print(jobs_all[['job_time', 'job_level', 'job_type']])
 
-# job_level = ["Internship", "Entry level", "Associate", "Mid-Senior level", "Director", "Executive"]
-# print(jobs_all.job_level.value_counts().head(4))
+
 
 #ANALYSIS
 #Datafame filtering
@@ -119,17 +119,16 @@ for i in counts:
 
 # Top keywords with their percentage of occarance 
 count_keywords = pd.DataFrame({'keywords': keywords_analyst, 'counts': counts, 'percentage': percentage})
-# print(count_keywords)
-
-
-# print(keywords_analyst)      
+print(count_keywords)
 
 # ploting keywords
-# wordcloud = WordCloud(width=800, height=400, background_color='white', max_words=200).generate_from_frequencies(word_freq)
-# plt.imshow(wordcloud, interpolation="bilinear")
-# plt.axis("off")
-# plt.show()
+wordcloud = WordCloud(width=800, height=400, background_color='white', max_words=200).generate_from_frequencies(word_freq)
+plt.imshow(wordcloud, interpolation="bilinear")
+plt.axis("off")
+plt.show()
 
+
+# Barplot of keywords
 g = sns.barplot(count_keywords, x="keywords", y="percentage")
 g.set_xticklabels(g.get_xticklabels(), 
                           rotation=45, 
