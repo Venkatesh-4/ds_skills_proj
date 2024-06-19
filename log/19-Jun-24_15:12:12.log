@@ -1,0 +1,166 @@
+19-Jun-24 15:12:12 - INFO - Log file log/19-Jun-24_15:12:12.log created
+19-Jun-24 15:12:12 - INFO - Checking if current daily csv exists...
+19-Jun-24 15:12:12 - INFO - output/19-Jun-24.csv deleted
+19-Jun-24 15:12:12 - INFO - Creating daily csv file...
+19-Jun-24 15:12:12 - INFO - output/19-Jun-24.csv created
+19-Jun-24 15:12:12 - WARNING - Python-dotenv could not parse statement starting at line 4
+19-Jun-24 15:12:12 - WARNING - Python-dotenv could not parse statement starting at line 5
+19-Jun-24 15:12:12 - INFO - Logging in to LinkedIn as alpharomeooo68@gmail.com...
+19-Jun-24 15:12:31 - ERROR - (1) FIRST exception on 0 of 1, retrying...
+19-Jun-24 15:12:31 - ERROR - Message: 
+Stacktrace:
+#0 0x60a1a41d770a <unknown>
+#1 0x60a1a3eba0dc <unknown>
+#2 0x60a1a3f06931 <unknown>
+#3 0x60a1a3f06a21 <unknown>
+#4 0x60a1a3f4b234 <unknown>
+#5 0x60a1a3f2989d <unknown>
+#6 0x60a1a3f485c3 <unknown>
+#7 0x60a1a3f29613 <unknown>
+#8 0x60a1a3ef94f7 <unknown>
+#9 0x60a1a3ef9e4e <unknown>
+#10 0x60a1a419d8db <unknown>
+#11 0x60a1a41a1981 <unknown>
+#12 0x60a1a41893ce <unknown>
+#13 0x60a1a41a24e2 <unknown>
+#14 0x60a1a416dd2f <unknown>
+#15 0x60a1a41c7108 <unknown>
+#16 0x60a1a41c72e0 <unknown>
+#17 0x60a1a41d683c <unknown>
+#18 0x792b0e097b5a <unknown>
+
+19-Jun-24 15:12:31 - ERROR - Traceback ->
+Traceback (most recent call last):
+  File "/home/daz/Documents/ds_skills_proj/n_scrape.py", line 275, in <module>
+    search_page, search_count = page_search(wd, search_page, search_count, file, logging)
+                                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/daz/Documents/ds_skills_proj/n_scrape.py", line 98, in page_search
+    elem = WebDriverWait(wd, 10).until(EC.presence_of_element_located((By.CSS_SELECTOR, "div[class='jobs-search-results-list__subtitle'] span")))
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/daz/Documents/ds_skills_proj/.venv/lib/python3.11/site-packages/selenium/webdriver/support/wait.py", line 105, in until
+    raise TimeoutException(message, screen, stacktrace)
+selenium.common.exceptions.TimeoutException: Message: 
+Stacktrace:
+#0 0x60a1a41d770a <unknown>
+#1 0x60a1a3eba0dc <unknown>
+#2 0x60a1a3f06931 <unknown>
+#3 0x60a1a3f06a21 <unknown>
+#4 0x60a1a3f4b234 <unknown>
+#5 0x60a1a3f2989d <unknown>
+#6 0x60a1a3f485c3 <unknown>
+#7 0x60a1a3f29613 <unknown>
+#8 0x60a1a3ef94f7 <unknown>
+#9 0x60a1a3ef9e4e <unknown>
+#10 0x60a1a419d8db <unknown>
+#11 0x60a1a41a1981 <unknown>
+#12 0x60a1a41893ce <unknown>
+#13 0x60a1a41a24e2 <unknown>
+#14 0x60a1a416dd2f <unknown>
+#15 0x60a1a41c7108 <unknown>
+#16 0x60a1a41c72e0 <unknown>
+#17 0x60a1a41d683c <unknown>
+#18 0x792b0e097b5a <unknown>
+
+19-Jun-24 15:12:46 - ERROR - (2) SECOND exception remains . Skipping to next page...
+19-Jun-24 15:12:46 - ERROR - Message: no such window: target window already closed
+from unknown error: web view not found
+  (Session info: chrome=126.0.6478.55)
+Stacktrace:
+#0 0x60a1a41d770a <unknown>
+#1 0x60a1a3eba0dc <unknown>
+#2 0x60a1a3e8f384 <unknown>
+#3 0x60a1a3f31d3d <unknown>
+#4 0x60a1a3f47f66 <unknown>
+#5 0x60a1a3f29613 <unknown>
+#6 0x60a1a3ef94f7 <unknown>
+#7 0x60a1a3ef9e4e <unknown>
+#8 0x60a1a419d8db <unknown>
+#9 0x60a1a41a1981 <unknown>
+#10 0x60a1a41893ce <unknown>
+#11 0x60a1a41a24e2 <unknown>
+#12 0x60a1a416dd2f <unknown>
+#13 0x60a1a41c7108 <unknown>
+#14 0x60a1a41c72e0 <unknown>
+#15 0x60a1a41d683c <unknown>
+#16 0x792b0e097b5a <unknown>
+
+19-Jun-24 15:12:46 - ERROR - Traceback ->
+Traceback (most recent call last):
+  File "/home/daz/Documents/ds_skills_proj/n_scrape.py", line 275, in <module>
+    search_page, search_count = page_search(wd, search_page, search_count, file, logging)
+                                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/daz/Documents/ds_skills_proj/n_scrape.py", line 98, in page_search
+    elem = WebDriverWait(wd, 10).until(EC.presence_of_element_located((By.CSS_SELECTOR, "div[class='jobs-search-results-list__subtitle'] span")))
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/daz/Documents/ds_skills_proj/.venv/lib/python3.11/site-packages/selenium/webdriver/support/wait.py", line 105, in until
+    raise TimeoutException(message, screen, stacktrace)
+selenium.common.exceptions.TimeoutException: Message: 
+Stacktrace:
+#0 0x60a1a41d770a <unknown>
+#1 0x60a1a3eba0dc <unknown>
+#2 0x60a1a3f06931 <unknown>
+#3 0x60a1a3f06a21 <unknown>
+#4 0x60a1a3f4b234 <unknown>
+#5 0x60a1a3f2989d <unknown>
+#6 0x60a1a3f485c3 <unknown>
+#7 0x60a1a3f29613 <unknown>
+#8 0x60a1a3ef94f7 <unknown>
+#9 0x60a1a3ef9e4e <unknown>
+#10 0x60a1a419d8db <unknown>
+#11 0x60a1a41a1981 <unknown>
+#12 0x60a1a41893ce <unknown>
+#13 0x60a1a41a24e2 <unknown>
+#14 0x60a1a416dd2f <unknown>
+#15 0x60a1a41c7108 <unknown>
+#16 0x60a1a41c72e0 <unknown>
+#17 0x60a1a41d683c <unknown>
+#18 0x792b0e097b5a <unknown>
+
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/daz/Documents/ds_skills_proj/n_scrape.py", line 283, in <module>
+    search_page, search_count= page_search(wd, search_page, search_count, file, logging)
+                               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/daz/Documents/ds_skills_proj/n_scrape.py", line 98, in page_search
+    elem = WebDriverWait(wd, 10).until(EC.presence_of_element_located((By.CSS_SELECTOR, "div[class='jobs-search-results-list__subtitle'] span")))
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/daz/Documents/ds_skills_proj/.venv/lib/python3.11/site-packages/selenium/webdriver/support/wait.py", line 96, in until
+    value = method(self._driver)
+            ^^^^^^^^^^^^^^^^^^^^
+  File "/home/daz/Documents/ds_skills_proj/.venv/lib/python3.11/site-packages/selenium/webdriver/support/expected_conditions.py", line 84, in _predicate
+    return driver.find_element(*locator)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/daz/Documents/ds_skills_proj/.venv/lib/python3.11/site-packages/selenium/webdriver/remote/webdriver.py", line 741, in find_element
+    return self.execute(Command.FIND_ELEMENT, {"using": by, "value": value})["value"]
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/daz/Documents/ds_skills_proj/.venv/lib/python3.11/site-packages/selenium/webdriver/remote/webdriver.py", line 347, in execute
+    self.error_handler.check_response(response)
+  File "/home/daz/Documents/ds_skills_proj/.venv/lib/python3.11/site-packages/selenium/webdriver/remote/errorhandler.py", line 229, in check_response
+    raise exception_class(message, screen, stacktrace)
+selenium.common.exceptions.NoSuchWindowException: Message: no such window: target window already closed
+from unknown error: web view not found
+  (Session info: chrome=126.0.6478.55)
+Stacktrace:
+#0 0x60a1a41d770a <unknown>
+#1 0x60a1a3eba0dc <unknown>
+#2 0x60a1a3e8f384 <unknown>
+#3 0x60a1a3f31d3d <unknown>
+#4 0x60a1a3f47f66 <unknown>
+#5 0x60a1a3f29613 <unknown>
+#6 0x60a1a3ef94f7 <unknown>
+#7 0x60a1a3ef9e4e <unknown>
+#8 0x60a1a419d8db <unknown>
+#9 0x60a1a41a1981 <unknown>
+#10 0x60a1a41893ce <unknown>
+#11 0x60a1a41a24e2 <unknown>
+#12 0x60a1a416dd2f <unknown>
+#13 0x60a1a41c7108 <unknown>
+#14 0x60a1a41c72e0 <unknown>
+#15 0x60a1a41d683c <unknown>
+#16 0x792b0e097b5a <unknown>
+
+19-Jun-24 15:12:46 - ERROR - Skipping to next page on 25 of 1...
+19-Jun-24 15:12:46 - INFO - LinkedIn data scraping complete with 1 first and 1 second exceptions
+19-Jun-24 15:12:46 - INFO - Regard all further alarms...

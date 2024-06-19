@@ -13,6 +13,7 @@ from selenium.webdriver.chrome.options import Options
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
+from selenium.webdriver.common.action_chains import ActionChains
 import os
 import csv
 import logging
@@ -84,8 +85,8 @@ def login(logging):
 def page_search(wd, search_page, search_count, file, logging):
     # wait time for events in seconds
     page_wait = 30
-    click_wait = 5
-    async_wait = 5
+    click_wait = 0.5
+    async_wait = 0.5
 
     # when retrying, number of attempts
     attempts = 3
@@ -93,8 +94,7 @@ def page_search(wd, search_page, search_count, file, logging):
     wd.get(url_search)
 
     # find the number of results 
-    height = wd.execute_script("return document.body.scrollHeight")
-    scroll_page(wd, height // 200)
+    
     elem = WebDriverWait(wd, 10).until(EC.presence_of_element_located((By.CSS_SELECTOR, "div[class='jobs-search-results-list__subtitle'] span")))
     search_count = elem.text
     search_count = int(search_count.split()[0])
@@ -107,6 +107,12 @@ def page_search(wd, search_page, search_count, file, logging):
         try:
             search_results = wd.find_element(By.XPATH,"//ul[@class='scaffold-layout__list-container']").find_elements(By.TAG_NAME, "li")
             result_ids = [result.get_attribute('id') for result in search_results if result.get_attribute('id') != '']
+            iframe1 = wd.find_element(By.ID, f"{result_ids[14]}")
+            iframe2 = wd.find_element(By.ID, f"{result_ids[22]}")
+            iframe3 = wd.find_element(By.ID, f"{result_ids[-1]}")
+            ActionChains(wd).scroll_to_element(iframe1).perform()
+            ActionChains(wd).scroll_to_element(iframe2).perform()
+            ActionChains(wd).scroll_to_element(iframe3).perform()
             print(result_ids)
             break
         except:
