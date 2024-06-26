@@ -26,13 +26,13 @@ The objective of this project was to analyze the necessary skills for an entry-l
 2. Identified that duplicate rows shared common values in the third and fourth columns, and used this as a criterion to remove duplicates.
 3. Corrected a significant data scraping issue where data that should have been in three columns ended up in one. Addressed this by analyzing element frequencies and writing a function to handle the split.
 4. Found that Data Engineer was the most frequently advertised job.
-   ![Job Frequency](images/job_freq.png)
+![Job Frequency](images/job_freq.png)
 5. Used filtering functions to focus on entry-level analyst jobs.
 6. Generated a word cloud using keywords extracted from the skills data to visually understand the most sought-after skills.
-   ![Word Cloud](images/word_cloud.png)
+![Word Cloud](images/word_cloud.png)
 7. Calculated counts and percentages for each skill based on the data (skills), omitting skills with a count of less than 2.
 8. Visualized this data in the form of a graph.
-   ![Skills Frequency](images/skills_freq.png)
+![Skills Frequency](images/skills_freq.png)
 
 **CLOSING COMMENTS:**
 
