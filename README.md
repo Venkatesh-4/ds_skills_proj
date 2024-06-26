@@ -32,7 +32,8 @@ The objective of this project was to analyze the necessary skills for an entry-l
 ![Word Cloud](images/word_cloud.png)
 7. Calculated counts and percentages for each skill based on the data (skills), omitting skills with a count of less than 2.
 8. Visualized this data in the form of a graph.
-![Skills Frequency](images/skills_freq.png)
+* ![Skills Frequency](images/skills_freq.png)
+
 
 **CLOSING COMMENTS:**
 
